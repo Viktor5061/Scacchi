@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package scacchi;
 
 /**
@@ -12,7 +8,8 @@ package scacchi;
 public abstract class Pedina {
     private int x;
     private int y;
-    private boolean dead;
+    private boolean bianco; //colore pedina -> true=bianco, false=nero
+    private boolean dead;   //true -> pedina distrutta
     
     public int getPosizioneX(){
         return x;
@@ -34,7 +31,11 @@ public abstract class Pedina {
         this.y=y;
     }
     
-    public void setDead(boolean b){
-        dead=b;
+    public void setDead(boolean dead){
+        this.dead=dead;
+    }
+    
+    public boolean isWhite(){
+        return colore;
     }
 }

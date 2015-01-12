@@ -10,5 +10,12 @@ package scacchi;
  * @author Viktor
  */
 public class Torre extends Pedina{
+    private int x,y;
+    private boolean dead;
     
+    public Torre(int x,int y){
+        this.x=x;
+        this.y=y;
+        dead=false;
+    }
 }
