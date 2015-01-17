@@ -5,6 +5,8 @@
  */
 package scacchi;
 
+import java.awt.event.ActionEvent;
+
 /**
  *
  * @author Viktor
@@ -12,10 +14,19 @@ package scacchi;
 public class Torre extends Pedina{
     private int x,y;
     private boolean dead;
+    private int colore;
     
-    public Torre(int x,int y){
-        this.x=x;
-        this.y=y;
-        dead=false;
+    public Torre(int x,int y,int colore){
+        super(x,y,colore);
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+  
+
+ 
 }

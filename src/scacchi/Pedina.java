@@ -1,15 +1,29 @@
 
 package scacchi;
 
+
+import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+//import javax.swing.ImageIcon;
 /**
  *
  * @author Viktor
+ * 
  */
-public abstract class Pedina {
+public abstract class Pedina extends JLabel {
     private int x;
     private int y;
-    private boolean bianco; //colore pedina -> true=bianco, false=nero
+    private int colore;      
     private boolean dead;   //true -> pedina distrutta
+    private final int BIANCO=1;
+    private final int NERO=-1;
+    
+    public Pedina(int x,int y,int colore){
+        this.x=x;
+        this.y=y;
+        dead=false;
+        this.colore=colore;
+    }
     
     public int getPosizioneX(){
         return x;
@@ -35,7 +49,13 @@ public abstract class Pedina {
         this.dead=dead;
     }
     
-    public boolean isWhite(){
+    public int getColore(){
         return colore;
     }
+    
+    public void setColore(int color){
+        colore=color;
+    }
+    
+    public abstract void actionPerformed(ActionEvent e);
 }

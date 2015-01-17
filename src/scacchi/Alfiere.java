@@ -10,5 +10,9 @@ package scacchi;
  * @author Viktor
  */
 public class Alfiere {
+
+    Alfiere(int i, int i0, int NERO) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
