@@ -1,3 +1,4 @@
+//vecchia versione della superclasse di tutte le pedine
 
 package scacchi;
 
