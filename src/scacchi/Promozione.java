@@ -3,6 +3,10 @@ package scacchi;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 // Classe che riproduce al processo di promozione di un pedone
 public class Promozione  implements ActionListener{
@@ -22,32 +26,38 @@ public class Promozione  implements ActionListener{
     public Promozione( JFrame s, Pezzo pe, Pezzo pB[], Pezzo pN[], Mossa m, int turno, Lista rst, boolean intell ){
         
         this.pe = pe;
-	Image torImg, cavImg, alfImg, regImg;
+	Image torImg=null, cavImg=null, alfImg=null, regImg = null;
         this.s = s;
         this.m = m;
         this.rst = rst;
         t = turno;
         f = new JFrame( "Promozione Pedone" );
         Container c = f.getContentPane();
-        Toolkit tk = Toolkit.getDefaultToolkit();
+        //Toolkit tk = Toolkit.getDefaultToolkit();
         
-        if( pe.colore == 1 ){
+        try {
+            if( pe.colore == 1 ){
             
-            p = pB;
-            torImg = tk.getImage( "scacchi.img/BTorre.gif" );
-            cavImg = tk.getImage( "scacchi.img/BCavallo.gif" );
-            alfImg = tk.getImage( "scacchi.img/BAlfiere.gif" );
-            regImg = tk.getImage( "scacchi.img/BRegina.gif" );
+                p = pB;
+                torImg = ImageIO.read(getClass().getResource("img/BTorre.gif"));
+                cavImg = ImageIO.read(getClass().getResource("img/BCavallo.gif"));
+                alfImg = ImageIO.read(getClass().getResource("img/BAlfiere.gif"));
+                regImg = ImageIO.read(getClass().getResource("img/BRegina.gif"));
         
-        } else {
+            } 
+            else {
             
-            p = pN;
-            torImg = tk.getImage( "scacchi.img/NTorre.gif" );
-            cavImg = tk.getImage( "scacchi.img/NCavallo.gif" );
-            alfImg = tk.getImage( "scacchi.img/NAlfiere.gif" );
-            regImg = tk.getImage( "scacchi.img/NRegina.gif" );
+                p = pN;
+                torImg = ImageIO.read(getClass().getResource("img/NTorre.gif"));
+                cavImg = ImageIO.read(getClass().getResource("img/NCavallo.gif"));
+                alfImg = ImageIO.read(getClass().getResource("img/NAlfiere.gif"));
+                regImg = ImageIO.read(getClass().getResource("img/NRegina.gif"));
         
-        } // Fine If Else
+            } 
+        }
+        catch (IOException ex) {
+            Logger.getLogger(Promozione.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         JLabel la = new JLabel( "In Cosa Vuoi Promuovere Il Pedone ?" );
         c.add( la );

@@ -30,12 +30,12 @@ public class Stampa extends Frame implements ActionListener{
                 b.printAll( pg );
                 pg.dispose();
             
-            } // Fine If
+            } 
             
             pjob.end();
         
-        } // Fine If
+        } 
     
-    } // Fine actionPerformed
+    } 
 
-} // Fine Classe Stampa
+} 

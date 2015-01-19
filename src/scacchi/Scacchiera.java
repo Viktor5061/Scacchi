@@ -70,11 +70,11 @@ public class Scacchiera extends JPanel implements  MouseListener, MouseMotionLis
             
             mt.waitForAll();
         
-        } catch( InterruptedException e ){} // Fine Try Catch
+        } catch( InterruptedException e ){} 
         
         addMouseListener( this );
     
-    } // Fine Costruttore Scacchiera
+    } 
 
     // Disegna la scacchiera, i pezzi e le i simboli alfanumerici per identificare delle caselle
     @Override

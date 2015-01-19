@@ -26,7 +26,7 @@ public class Situazione implements Serializable{
         posFcx = posF.cx;
         posFcy = posF.cy;
         or = g;
-        lastmove = posI.coord() + " - " + posF.coord();
+        lastmove = posI.coord() + " -> " + posF.coord();
     
     } // Fine Costruttore Situazione
 
@@ -36,14 +36,14 @@ public class Situazione implements Serializable{
         
         if( turnoIniz == 0 ){
             
-            return lastmove + '\n';
+            return "NERO: "+lastmove + '\n';
         
         } else {
             
-            return lastmove + " ";
+            return "BIANCO: "+lastmove + "\n";
         
-        } // Fine If Else
+        } 
     
-    } // Fine toString
+    } 
 
-} // Fine Classe Situazione
+} 
