@@ -13,7 +13,7 @@ public abstract class Pezzo {
     protected int valore;
     protected  Image imm;
     protected  Posizione p;
-    protected  Posizione[] permpos = new Posizione[30]; // La Posizione Max E 27 Per La Regina
+    protected  Posizione[] permpos = new Posizione[30]; // La Posizione Max è 27 Per La Regina
     
     public Pezzo( String n, int cp, int v, Image i, Posizione pos ){
         
@@ -24,7 +24,7 @@ public abstract class Pezzo {
         p = pos;
         p.occupata = cp;
     
-    } // Fine Costruttore Pezzo
+    } 
     
     public void setPos( Posizione pos ){
         
@@ -38,7 +38,7 @@ public abstract class Pezzo {
         
         return p;
     
-    } // Fine getPos
+    } 
 
     // Metodo che restituisce un vettore delle posizioni che il pezzo puo assumere
     // Si tratta di un metodo specifico del pezzo che e in grado di descriverne il comportamento
