@@ -316,6 +316,7 @@ public class Scacchiera extends JPanel implements  MouseListener, MouseMotionLis
         Image imm[] = new Image[ 12 ];
 
         // Recupero le immagini dei pezzi bianchi
+        /*
         imm[ 0 ] = tk.getImage( "scacchi.img/BPedone.gif" );
         imm[ 1 ] = tk.getImage( "scacchi.img/BTorre.gif" );
         imm[ 2 ] = tk.getImage( "scacchi.img/BCavallo.gif" );
@@ -330,7 +331,7 @@ public class Scacchiera extends JPanel implements  MouseListener, MouseMotionLis
         imm[ 9 ] = tk.getImage( "scacchi.img/NAlfiere.gif" );
         imm[ 10 ] = tk.getImage( "scacchi.img/NRegina.gif" );
         imm[ 11 ] = tk.getImage( "scacchi.img/NRe.gif" );
-
+        */
         // Creo i pedoni bianchi
         for( int i = 0; i < 8; i++ ){
             
