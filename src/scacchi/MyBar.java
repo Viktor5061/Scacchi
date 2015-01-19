@@ -45,6 +45,7 @@ public class MyBar extends JMenuBar implements ActionListener{
         add( m2 );
         
         JToolBar br = new JToolBar();
+        br.setFloatable(false);
         Toolkit tk = Toolkit.getDefaultToolkit();
         
         Image freccia = null;
