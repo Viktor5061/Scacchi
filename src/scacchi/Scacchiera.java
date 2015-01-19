@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 
 // Contiene la grafica della scacchiera
 public class Scacchiera extends JPanel implements  MouseListener, MouseMotionListener, ImageObserver{
-    
+    private final int LATO=54;
     private ImageObserver obs;
     private Image board, tmpimg;
     protected int turno;
@@ -54,7 +54,7 @@ public class Scacchiera extends JPanel implements  MouseListener, MouseMotionLis
         } catch (IOException ex) {
             Logger.getLogger(Scacchiera.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //board = tk.getImage( "scacchi.img/board.jpg" );        
+        
         MediaTracker mt = new MediaTracker( this );
         mt.addImage( board, 0 );
 
@@ -109,9 +109,9 @@ public class Scacchiera extends JPanel implements  MouseListener, MouseMotionLis
         
         for( int i = 0; i < 2; i++ ){
             
-            g.drawString( "8", ( int )( p * k ), ( int )( 54 * k ) );
-            g.drawString( "7", ( int )( p * k ), ( int )( 108 * k ) );
-            g.drawString( "6", ( int )( p * k ), ( int )( 162 * k ) );
+            g.drawString( "8", ( int )( p * k ), ( int )( LATO * k ) );
+            g.drawString( "7", ( int )( p * k ), ( int )( 2*LATO * k ) );
+            g.drawString( "6", ( int )( p * k ), ( int )( 3*LATO * k ) );
             g.drawString( "5", ( int )( p * k ), ( int )( 216 * k ) );
             g.drawString( "4", ( int )( p * k ), ( int )( 270 * k ) );
             g.drawString( "3", ( int )( p * k ), ( int )( 324 * k ) );
@@ -222,7 +222,7 @@ public class Scacchiera extends JPanel implements  MouseListener, MouseMotionLis
     
     } // Fine mousePressed
 
-    // Trova la casella piu vicina al punto in cui si e lascito il pezzo e controlla la mossa
+    // Trova la casella piu vicina al punto in cui si è lascito il pezzo e controlla la mossa
     @Override
     public void mouseReleased( MouseEvent e ){
         

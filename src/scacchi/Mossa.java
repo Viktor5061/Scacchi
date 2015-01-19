@@ -82,7 +82,7 @@ public class Mossa extends JPanel{
         
         } // Fine If Else
 
-        // Quello che segue va fatto se la mossa e stata effettuata
+        // Quello che segue va fatto se la mossa è stata effettuata
         if( turnoIniz != turno ){
             
             if( !prom ){
