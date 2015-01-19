@@ -276,6 +276,7 @@ public class Mossa extends JPanel{
                 
                 } // Fine If Else
                 
+                //?
                 if( posI.cx - posF.cx < 0 ){
                     
                     pT[ 9 ].setPos( pos[ 5 ][ r ]);

@@ -119,19 +119,21 @@ public class ListaNodi implements Lista, Serializable, Cloneable{
     @Override
     public String toString(){
         
-        String tmp = 1 + " . ";
+        //String tmp = 1 + " . ";
+        String tmp="";
         Nodo i = nodo;
-        int j = 2;
+        int j = 1;
         
         while( i != null ){
-            
-            tmp += i.info.toString();
-            
             if( j != 0 ){
                 
                 tmp += j + " . ";
             
             } // Fine If
+            
+            tmp += i.info.toString();
+            
+            
             
             i = i.next;
             j++;
@@ -146,30 +148,21 @@ public class ListaNodi implements Lista, Serializable, Cloneable{
     @Override
     public String toStringComp(){
         
-        String tmp = " " + '\t' + 1 + " . " + '\t';
+        //String tmp = " " + '\t' + 1 + " . ";
+        String tmp="";
         Nodo i = nodo;
-        int j = 2;
+        int j = 1;
         
         while( i != null ){
             
-            tmp = tmp + ( ( Situazione )( i.info ) ).peNome + " " + i.info.toString();
-            
-            if( j % 2 != 0 ){
-                
-                tmp = tmp + '\t' + ( j / 2 + 1 ) + " . " + '\t';
-            
-            } else {
-                
-                tmp=tmp+'\t';
-            
-            } // Fine If Else
-            
+            tmp += j + " . " + ( ( Situazione )( i.info ) ).peNome + " " + i.info.toString();
             i = i.next;
             j++;
         
         } // Fine While
         
-        tmp = tmp + '\n' + '\n' + "\t" + "\t" + "Numero di mosse: " + ( getTnumb() - 1 );
+        tmp += "\n\n" + "\t\t\t" + "Numero di mosse: " + ( getTnumb() - 1 );
+        
         return tmp;
     
     } // Fine toStringComp
