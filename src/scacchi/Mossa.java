@@ -381,9 +381,9 @@ public class Mossa extends JPanel{
             // Scrivo sull'area di testo la mossa effettuata
             mosse.setText( rst.toString() );
             // Scrivo nel messaggio a chi tocca
-            messaggi.setText( "Mossa " + rst.getTnumb() + " : Tocca Al " + achi);
+            messaggi.setText( "Mossa " + rst.getTnumb() + " : Tocca Al " + achi );
             mang.repaint(); // Aggiorno il pannello mangiati
-        
+            
         } // Fine If
 
         // Comunico lo SCACCO quando c'e

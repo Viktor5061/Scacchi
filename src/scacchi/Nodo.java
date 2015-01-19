@@ -17,6 +17,7 @@ public class Nodo implements Serializable{
 
     // Costruisce un nodo con riferimento al successivo
     public Nodo( Object o, Nodo n ){
+        
         info = o;
         next = n;
     

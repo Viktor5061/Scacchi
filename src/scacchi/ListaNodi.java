@@ -116,28 +116,27 @@ public class ListaNodi implements Lista, Serializable, Cloneable{
     
     } // Fine taglia
     
-    // ToString per  generare la stringa per il pannello delle mosse
     @Override
     public String toString(){
         
-        String tmp = " " + 1 + " . ";
+        String tmp = 1 + " . ";
         Nodo i = nodo;
         int j = 2;
         
         while( i != null ){
             
-            tmp = tmp + i.info.toString();
+            tmp += i.info.toString();
             
-            if( j % 2 != 0 ){
+            if( j != 0 ){
                 
-                tmp = tmp + " " + ( j / 2 + 1 ) + " . ";
+                tmp += j + " . ";
             
             } // Fine If
             
             i = i.next;
             j++;
         
-        } // Fine While
+        } // Fine 
         
         return tmp;
     
