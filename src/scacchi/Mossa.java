@@ -82,7 +82,7 @@ public class Mossa extends JPanel{
         
         } // Fine If Else
 
-        // Quello che segue va fatto se la mossa è stata effettuata
+        // Quello che segue va fatto se la mossa e stata effettuata
         if( turnoIniz != turno ){
             
             if( !prom ){
@@ -93,7 +93,7 @@ public class Mossa extends JPanel{
                     
                     pr = p.opt;
                 
-                } 
+                } // Fine If
                 
                 if( pe.colore == 1 ){
                     
