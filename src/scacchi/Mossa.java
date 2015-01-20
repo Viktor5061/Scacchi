@@ -274,13 +274,8 @@ public class Mossa extends JPanel{
                     r = 7;
                 
                 } // Fine If Else
-                
-<<<<<<< HEAD
-                if( posI.coordX - posF.coordX < 0 ){
-=======
-                //?
-                if( posI.cx - posF.cx < 0 ){
->>>>>>> origin/master
+
+                if(  posI.coordX - posF.coordY < 0 ){
                     
                     pT[ 9 ].setPos( pos[ 5 ][ r ]);
                     pT[ 9 ].spostato = true;
