@@ -40,20 +40,20 @@ public class InterfacciaGrafica {
         
         try {
             
-            imm[ 0 ] = ImageIO.read( getClass().getResource( "img/BPedone.gif" ) );
-            imm[ 1 ] = ImageIO.read( getClass().getResource("img/BTorre.gif") );
-            imm[ 2 ] = ImageIO.read( getClass().getResource( "img/BCavallo.gif") );
-            imm[ 3 ] = ImageIO.read( getClass().getResource("img/BAlfiere.gif") );
-            imm[ 4 ] = ImageIO.read( getClass().getResource("img/BRegina.gif") );
-            imm[ 5 ] = ImageIO.read( getClass().getResource("img/BRe.gif") );
+            imm[ 0 ] = ImageIO.read( getClass().getResource( "img/Pedone_Bianco.gif" ) );
+            imm[ 1 ] = ImageIO.read( getClass().getResource( "img/Torre_Bianca.gif" ) );
+            imm[ 2 ] = ImageIO.read( getClass().getResource( "img/Cavallo_Bianco.gif" ) );
+            imm[ 3 ] = ImageIO.read( getClass().getResource( "img/Alfiere_Bianco.gif" ) );
+            imm[ 4 ] = ImageIO.read( getClass().getResource( "img/Regina_Bianca.gif" ) );
+            imm[ 5 ] = ImageIO.read( getClass().getResource( "img/Re_Bianco.gif" ) );
             
             // Recupero le immagini pezzi neri
-            imm[ 6 ] = ImageIO.read( getClass().getResource( "img/NPedone.gif") );
-            imm[ 7 ] = ImageIO.read( getClass().getResource( "img/NTorre.gif") );
-            imm[ 8 ] = ImageIO.read( getClass().getResource( "img/NCavallo.gif") );
-            imm[ 9 ] = ImageIO.read( getClass().getResource( "img/NAlfiere.gif") );
-            imm[ 10 ] = ImageIO.read( getClass().getResource( "img/NRegina.gif") );
-            imm[ 11 ] = ImageIO.read( getClass().getResource( "img/NRe.gif") );
+            imm[ 6 ] = ImageIO.read( getClass().getResource( "img/Pedone_Nero.gif" ) );
+            imm[ 7 ] = ImageIO.read( getClass().getResource( "img/Torre_Nera.gif" ) );
+            imm[ 8 ] = ImageIO.read( getClass().getResource( "img/Cavallo_Nero.gif" ) );
+            imm[ 9 ] = ImageIO.read( getClass().getResource( "img/Alfiere_Nero.gif" ) );
+            imm[ 10 ] = ImageIO.read( getClass().getResource( "img/Regina_Nera.gif" ) );
+            imm[ 11 ] = ImageIO.read( getClass().getResource( "img/Re_Nero.gif" ) );
         
         } catch ( IOException ex ){}
             

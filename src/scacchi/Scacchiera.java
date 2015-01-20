@@ -44,7 +44,7 @@ public class Scacchiera extends JPanel implements  MouseListener, MouseMotionLis
 
         // Recupero l'immagine della scacchiera
         try {
-            board = ImageIO.read( getClass().getResource( "img/board.jpg" ) );
+            board = ImageIO.read( getClass().getResource( "img/Scacchiera.jpg" ) );
         } catch ( IOException ex ) {}
 
         addMouseListener( this );

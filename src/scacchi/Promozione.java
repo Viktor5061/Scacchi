@@ -37,18 +37,18 @@ public class Promozione  implements ActionListener{
             if( pe.colore == 1 ){
             
                 p = pB;
-                torImg = ImageIO.read(getClass().getResource("img/BTorre.gif"));
-                cavImg = ImageIO.read(getClass().getResource("img/BCavallo.gif"));
-                alfImg = ImageIO.read(getClass().getResource("img/BAlfiere.gif"));
-                regImg = ImageIO.read(getClass().getResource("img/BRegina.gif"));
+                torImg = ImageIO.read(getClass().getResource( "img/Torre_Bianca.gif" ) );
+                cavImg = ImageIO.read(getClass().getResource( "img/Cavallo_Bianco.gif" ) );
+                alfImg = ImageIO.read(getClass().getResource( "img/Alfiere_Bianco.gif" ) );
+                regImg = ImageIO.read(getClass().getResource( "img/Regina_Bianca.gif" ) );
         
             } else {
             
                 p = pN;
-                torImg = ImageIO.read(getClass().getResource("img/NTorre.gif"));
-                cavImg = ImageIO.read(getClass().getResource("img/NCavallo.gif"));
-                alfImg = ImageIO.read(getClass().getResource("img/NAlfiere.gif"));
-                regImg = ImageIO.read(getClass().getResource("img/NRegina.gif"));
+                torImg = ImageIO.read(getClass().getResource( "img/Torre_Nera.gif" ) );
+                cavImg = ImageIO.read(getClass().getResource( "img/Cavallo_Nero.gif" ) );
+                alfImg = ImageIO.read(getClass().getResource( "img/Alfiere_Nero.gif" ) );
+                regImg = ImageIO.read(getClass().getResource( "img/Regina_Nera.gif" ) );
         
             } 
         }

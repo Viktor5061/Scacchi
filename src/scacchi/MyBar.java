@@ -48,7 +48,7 @@ public class MyBar extends JMenuBar implements ActionListener{
         
         Image freccia = null;
         try {
-            freccia = ImageIO.read(getClass().getResource("img/last.gif"));
+            freccia = ImageIO.read(getClass().getResource("img/Annulla_Ultima_Mossa.gif"));
         } catch (IOException ex) {}
         
         JButton b1 = new JButton( new ImageIcon( freccia ) );
@@ -58,7 +58,7 @@ public class MyBar extends JMenuBar implements ActionListener{
 
         Image nuovo = null;
         try {
-            nuovo = ImageIO.read(getClass().getResource("img/new.gif"));
+            nuovo = ImageIO.read(getClass().getResource("img/Nuova_Partita.gif"));
         } catch (IOException ex) {}
         JButton b2 = new JButton( new ImageIcon( nuovo ) );
         b2.setActionCommand( "Nuova Partita" );
@@ -67,7 +67,7 @@ public class MyBar extends JMenuBar implements ActionListener{
         
         Image lista = null;
         try {
-            lista = ImageIO.read(getClass().getResource("img/list.gif"));
+            lista = ImageIO.read(getClass().getResource("img/Lista_Mosse.gif"));
         } catch (IOException ex) {}
 
         JButton b5 = new JButton( new ImageIcon ( lista ) );
