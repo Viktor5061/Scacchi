@@ -3,14 +3,14 @@ package scacchi;
 // Classe che contiene i metodi per verificare le condizioni di scacco e scacco matto
 public class VerificaScacco{
     
-    private Scacchiera b;
-    private Mossa mos;
+    private Scacchiera scacchiera;
+    private Mossa mossa;
 
     // Costruttore che riceve i riferimenti necessari per le invocazioni di metodi di altre classi
-    public VerificaScacco( Scacchiera b, Mossa mos ){
+    public VerificaScacco( Scacchiera scacchiera, Mossa mossa ){
         
-        this.b = b;
-        this.mos = mos;
+        this.scacchiera = scacchiera;
+        this.mossa = mossa;
     
     } // Fine Costruttore VerificaScacco
 
@@ -22,14 +22,14 @@ public class VerificaScacco{
         
         for( int i = 15; i >= 0 && controllo; i-- ){
             
-            b.aggiorna( rst );
+            scacchiera.aggiorna( rst );
             Posizione[] mop = pA[ i ].mossePermesse( pos );
             Posizione tmp = pA[ i ].getPos();
             int j = 0;
             
             while( mop[ j ] != null ){
                 
-                int t = mos.valuta( pA[ i ], pA[ i ].getPos(), mop[ j ], pA[ i ].colore, true );
+                int t = mossa.valuta( pA[ i ], pA[ i ].getPos(), mop[ j ], pA[ i ].colore, true );
                 
                 if( t != pA[ i ].colore ){
                     
@@ -43,7 +43,7 @@ public class VerificaScacco{
         
         } // Fine For
         
-        b.aggiorna( rst );
+        scacchiera.aggiorna( rst );
         return controllo;
     
     } // Fine verificaScaccoMatto

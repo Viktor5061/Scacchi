@@ -4,8 +4,6 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 // Estende la classe JMenuBar per creare una barra dei menu personalizzata
@@ -51,9 +49,7 @@ public class MyBar extends JMenuBar implements ActionListener{
         Image freccia = null;
         try {
             freccia = ImageIO.read(getClass().getResource("img/last.gif"));
-        } catch (IOException ex) {
-            Logger.getLogger(MyBar.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (IOException ex) {}
         
         JButton b1 = new JButton( new ImageIcon( freccia ) );
         b1.setActionCommand( "Annulla L'Ultima Mossa" );
@@ -63,9 +59,7 @@ public class MyBar extends JMenuBar implements ActionListener{
         Image nuovo = null;
         try {
             nuovo = ImageIO.read(getClass().getResource("img/new.gif"));
-        } catch (IOException ex) {
-            Logger.getLogger(MyBar.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (IOException ex) {}
         JButton b2 = new JButton( new ImageIcon( nuovo ) );
         b2.setActionCommand( "Nuova Partita" );
         b2.addActionListener( this );
@@ -74,9 +68,7 @@ public class MyBar extends JMenuBar implements ActionListener{
         Image lista = null;
         try {
             lista = ImageIO.read(getClass().getResource("img/list.gif"));
-        } catch (IOException ex) {
-            Logger.getLogger(MyBar.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (IOException ex) {}
 
         JButton b5 = new JButton( new ImageIcon ( lista ) );
         b5.setActionCommand( "Lista Mosse" );

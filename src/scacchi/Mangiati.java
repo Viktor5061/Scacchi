@@ -9,30 +9,30 @@ public class Mangiati extends JPanel implements ImageObserver{
     
     private ImageObserver obs;
     private float k;
-    private Pezzo pB[], pN[];
-    private Posizione[] posB = new Posizione[ 15 ];
-    private Posizione[] posN = new Posizione[ 15 ];
+    private Pezzo pezziBianchi[], pezziNeri[];
+    private Posizione[] posizioneBianchi = new Posizione[ 15 ];
+    private Posizione[] posizioneNeri = new Posizione[ 15 ];
     
     // Genera il pannello e le poszioni che i pezzi possono assumervi
     public Mangiati( Pezzo pezB[], Pezzo pezN[], float coeff ){
         
         super();
-        pB = pezB;
-        pN = pezN;
+        pezziBianchi = pezB;
+        pezziNeri = pezN;
         k = coeff;
-        setBackground( Color.darkGray );
+        setBackground( Color.GRAY );
         
         for( int i = 0; i < 8; i++ ){
             
-            posB[ i ] = new Posizione( 0, 7 - i, ( float )( k / 1.3 ) );
-            posN[ i ] = new Posizione( 3, 7 - i, ( float )( k / 1.3 ) );
+            posizioneBianchi[ i ] = new Posizione( 0, 7 - i, ( float )( k / 1.3 ) );
+            posizioneNeri[ i ] = new Posizione( 3, 7 - i, ( float )( k / 1.3 ) );
         
         } // Fine For
         
         for( int i = 8; i < 15; i++ ){
             
-            posB[ i ] = new Posizione( 1, 15 - i, ( float )( k / 1.3 ) );
-            posN[ i ] = new Posizione( 4, 15 - i, ( float )( k / 1.3 ) );
+            posizioneBianchi[ i ] = new Posizione( 1, 15 - i, ( float )( k / 1.3 ) );
+            posizioneNeri[ i ] = new Posizione( 4, 15 - i, ( float )( k / 1.3 ) );
         
         } // Fine For
     
@@ -43,7 +43,7 @@ public class Mangiati extends JPanel implements ImageObserver{
     public void paintComponent( Graphics g ){
         
         super.paintComponent( g );
-        g.setColor( new Color( 236, 220, 166 ) );
+        g.setColor( Color.RED );
         g.setFont( new Font( "Times New Roman", 2, ( int )( 14 * k ) ) );
         g.drawString( "Pezzi Mangiati", ( int )( 80 * k ), ( int )( 15 * k ) );
         
@@ -51,16 +51,16 @@ public class Mangiati extends JPanel implements ImageObserver{
         
         for( int i = 14; i >= 0; i-- ){
             
-            if( pB[ i ].mangiato ){
+            if( pezziBianchi[ i ].mangiato ){
             
-                g.drawImage( pB[ i ].imm,posB[ j ].px,posB[ j ].py, ( int )( pB[ i ].imm.getWidth( obs ) * k / 1.1), ( int )(pB[ i ].imm.getHeight( obs ) * k / 1.1 ), null);
+                g.drawImage(pezziBianchi[ i ].imm,posizioneBianchi[ j ].pixelX,posizioneBianchi[ j ].pixelY, ( int )( pezziBianchi[ i ].imm.getWidth( obs ) * k / 1.1), ( int )(pezziBianchi[ i ].imm.getHeight( obs ) * k / 1.1 ), null);
                 j++;
             
             } // Fine If
             
-            if( pN[ i ].mangiato ){
+            if( pezziNeri[ i ].mangiato ){
             
-                g.drawImage( pN[ i ].imm,posN[ m ].px,posN[ m ].py, ( int )( pN[ i ].imm.getWidth( obs ) * k / 1.1 ), ( int )( pN[ i ].imm.getHeight( obs ) * k / 1.1), null);
+                g.drawImage(pezziNeri[ i ].imm,posizioneNeri[ m ].pixelX,posizioneNeri[ m ].pixelY, ( int )( pezziNeri[ i ].imm.getWidth( obs ) * k / 1.1 ), ( int )( pezziNeri[ i ].imm.getHeight( obs ) * k / 1.1), null);
                 m++;
             
             } // Fine If

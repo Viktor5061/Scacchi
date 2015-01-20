@@ -41,7 +41,7 @@ public class TerminaProgramma implements WindowListener, ActionListener{
         c.setLayout( new FlowLayout() );
         
 
-        f.setBounds( screenWidth, screenHeigh, 300, 90 );
+        f.setBounds( screenWidth, screenHeigh, 300, 100 );
         f.setVisible( true );
     
     } // Fine windowClosing

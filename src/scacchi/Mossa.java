@@ -33,17 +33,17 @@ public class Mossa extends JPanel{
         mang = ma;
         s = sc;
         this.rst = rst;
-        messaggi = new JTextField( ( int )( 20 * k ) );
+        messaggi = new JTextField( 40 );
         messaggi.setEditable( false );
-        messaggi.setText( "Mossa 1: Tocca Al BIANCO" );
-        notifiche = new JTextField( ( int )( 20 * k ) );
+        messaggi.setText( "Mossa 1: Tocca Al Bianco" );
+        notifiche = new JTextField( 40 );
         notifiche.setEditable( false );
         add( messaggi );
         add( notifiche );
-        notifiche.setBackground( Color.gray.brighter() );
-        mosse = new JTextArea( ( int )( 3 * k ), ( int )( 20 * k ) );
+        notifiche.setBackground( Color.ORANGE );
+        mosse = new JTextArea( 10, 40 );
         mosse.setEditable( false );
-        messaggi.setBackground( Color.gray.brighter() );
+        messaggi.setBackground( Color.YELLOW );
         scr=new JScrollPane( mosse );
         scr.setHorizontalScrollBarPolicy( JScrollPane.HORIZONTAL_SCROLLBAR_NEVER );
         add( scr );
@@ -126,9 +126,8 @@ public class Mossa extends JPanel{
         
         if( !virtual ){
             
-            notifiche.setBackground( Color.gray.brighter() );
-            notifiche.setFont( new Font( "Arial", 0, 13 ) );
-            notifiche.setText( "Mossa non consentita" );
+            notifiche.setBackground( Color.ORANGE );
+            notifiche.setText( "Mossa Non Consentita, Riprova!!!" );
         
         } // Fine If
         
@@ -157,7 +156,7 @@ public class Mossa extends JPanel{
             // Controllo inoltre che posF non sia quella di un re: non si mangia
             if( mp[ j ] == posF && mp[ j ] != pN[ 15 ].getPos() && mp[ j ] != pB[ 15 ].getPos() ){
                 
-                int tmpo = posF.occupata;
+                int tmpo = posF.casellaOccupata;
                 pe.setPos( posF );
                 
                 if( !virtual ){
@@ -208,7 +207,7 @@ public class Mossa extends JPanel{
                 
                 } // Fine For
                 
-                if( isep && !hamang && ( posF.cx == posI.cx + s && posF.cy == posI.cy + s || posF.cx == posI.cx - s && posF.cy == posI.cy + s ) ){
+                if( isep && !hamang && ( posF.coordX == posI.coordX + s && posF.coordY == posI.coordY + s || posF.coordX == posI.coordX - s && posF.coordY == posI.coordY + s ) ){
                     
                     if( !rst.isEmpty() ){
                         
@@ -218,11 +217,11 @@ public class Mossa extends JPanel{
                         if( pos[ sit.posIcx ][ sit.posIcy - s ] != pe.getPos() ){
                             
                             pe.setPos( posI );
-                            posF.occupata = tmpo;
+                            posF.casellaOccupata = tmpo;
                             
                             if( !virtual ){
                                 
-                                notifiche.setText( "Mossa non consentita" );
+                                notifiche.setText( "Mossa Non Consentita, Riprova!!!" );
                             
                             } // Fine If
                         
@@ -236,15 +235,15 @@ public class Mossa extends JPanel{
                 
                 } // Fine If
                 
-                if( !ai.verificaScacco( pT[ 15 ].getPos().cx, pT[ 15 ].getPos().cy,pos, pA ) ){
+                if( !ai.verificaScacco(pT[ 15 ].getPos().coordX, pT[ 15 ].getPos().coordY,pos, pA ) ){
                     
                     pe.setPos( posI );
-                    posF.occupata = tmpo;
+                    posF.casellaOccupata = tmpo;
                     pA[ i ].mangiato = false;
                     
                     if( !virtual ){
                         
-                        notifiche.setText( "La mossa lascia il Re sotto scacco" );
+                        notifiche.setText( "La Mossa Effettuata Lascia Il Re Sotto Scacco !!!" );
                     
                     } // Fine If
                 
@@ -262,7 +261,7 @@ public class Mossa extends JPanel{
             
             // Considero i casi particolari:
             // ARROCCO
-            if( pe == pT[ 15 ] && Math.abs( posI.cx - posF.cx ) == 2 ){
+            if( pe == pT[ 15 ] && Math.abs( posI.coordX - posF.coordX ) == 2 ){
                 
                 int r;
                 
@@ -276,8 +275,12 @@ public class Mossa extends JPanel{
                 
                 } // Fine If Else
                 
+<<<<<<< HEAD
+                if( posI.coordX - posF.coordX < 0 ){
+=======
                 //?
                 if( posI.cx - posF.cx < 0 ){
+>>>>>>> origin/master
                     
                     pT[ 9 ].setPos( pos[ 5 ][ r ]);
                     pT[ 9 ].spostato = true;
@@ -292,7 +295,7 @@ public class Mossa extends JPanel{
             } // Fine If
 
             // Promozione Pedone
-            if( pe.getPos().cy == 7 || pe.getPos().cy == 0 ){
+            if( pe.getPos().coordY == 7 || pe.getPos().coordY == 0 ){
                 
                 for( int i = 0; i < 8; i++ ){
                     
@@ -369,11 +372,11 @@ public class Mossa extends JPanel{
         
         if( turno == 0 ){
             
-            achi = "NERO";
+            achi = "Nero";
         
         } else {
             
-            achi = "BIANCO";
+            achi = "Bianco";
         
         } // Fine If Else
         
@@ -388,15 +391,14 @@ public class Mossa extends JPanel{
         } // Fine If
 
         // Comunico lo SCACCO quando c'e
-        if( !ai.verificaScacco( pA[ 15 ].getPos().cx, pA[ 15 ].getPos().cy,pos, pT ) ){
+        if( !ai.verificaScacco(pA[ 15 ].getPos().coordX, pA[ 15 ].getPos().coordY,pos, pT ) ){
             
             messaggi.setText( "Mossa " + rst.getTnumb() + ": Scacco Al Re " + achi);
             
             if( ncm && ai.verificaScaccoMatto( pA, pT, pos, rst ) ){
                 
                 notifiche.setBackground( Color.red );
-                notifiche.setFont( new Font( "Arial Black", 0, 16 ) );
-                notifiche.setText( "Scacco Matto" );
+                notifiche.setText( "Scacco Matto !!!" );
             
             } // Fine If
         

@@ -4,8 +4,6 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 // Classe che riproduce al processo di promozione di un pedone
@@ -44,8 +42,7 @@ public class Promozione  implements ActionListener{
                 alfImg = ImageIO.read(getClass().getResource("img/BAlfiere.gif"));
                 regImg = ImageIO.read(getClass().getResource("img/BRegina.gif"));
         
-            } 
-            else {
+            } else {
             
                 p = pN;
                 torImg = ImageIO.read(getClass().getResource("img/NTorre.gif"));
@@ -55,31 +52,29 @@ public class Promozione  implements ActionListener{
         
             } 
         }
-        catch (IOException ex) {
-            Logger.getLogger(Promozione.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        catch (IOException ex) {}
         
         JLabel la = new JLabel( "In Cosa Vuoi Promuovere Il Pedone ?" );
         c.add( la );
         
         regina = new JButton( new ImageIcon( regImg ) );
         regina.addActionListener( this );
-        regina.setActionCommand( "regina" );
+        regina.setActionCommand( "Regina" );
         c.add( regina );
         
         torre = new JButton( new ImageIcon( torImg ) );
         torre.addActionListener( this );
-        torre.setActionCommand( "torre" );
+        torre.setActionCommand( "Torre" );
         c.add( torre );
         
         cavallo = new JButton( new ImageIcon( cavImg ) );
         cavallo.addActionListener( this );
-        cavallo.setActionCommand( "cavallo" );
+        cavallo.setActionCommand( "Cavallo" );
         c.add( cavallo );
         
         alfiere = new JButton( new ImageIcon( alfImg ) );
         alfiere.addActionListener( this );
-        alfiere.setActionCommand( "alfiere" );
+        alfiere.setActionCommand( "Alfiere" );
         c.add( alfiere );
         
         c.setLayout( new FlowLayout() );
@@ -93,10 +88,10 @@ public class Promozione  implements ActionListener{
             
             switch( op2 ){
                 
-                case 1 : opt = "regina"; break;
-                case 2 : opt = "torre"; break;
-                case 3 : opt = "cavallo"; break;
-                case 4 : opt = "alfiere";
+                case 1 : opt = "Regina"; break;
+                case 2 : opt = "Torre"; break;
+                case 3 : opt = "Cavallo"; break;
+                case 4 : opt = "Alfiere";
             
             } // Fine Switch
             
@@ -129,28 +124,28 @@ public class Promozione  implements ActionListener{
     // Consente di eseguire la sostituzione del pedone con il pezzo indicato
     public void promote( String scelta ){
         
-        if( scelta.equals( "regina" ) ){
+        if( scelta.equals( "Regina" ) ){
             
             p[ h ] = new Regina( p[ h ].colore, p[ 14 ].imm, p[ h ].getPos() );
             p[ h ].promosso = true;
         
         } // Fine If
         
-        if( scelta.equals( "torre" ) ){
+        if( scelta.equals( "Torre" ) ){
             
             p[ h ] = new Torre( p[ h ].colore, p[ 8 ].imm, p[ h ].getPos() );
             p[ h ].promosso = true;
         
         } // Fine If
         
-        if( scelta.equals( "cavallo" ) ){
+        if( scelta.equals( "Cavallo" ) ){
             
             p[ h ] = new Cavallo( p[ h ].colore, p[ 10 ].imm, p[ h ].getPos() );
             p[ h ].promosso = true;
         
         } // Fine If
         
-        if( scelta.equals( "alfiere" ) ){
+        if( scelta.equals( "Alfiere" ) ){
             
             p[ h ] = new Alfiere( p[ h ].colore, p[ 12 ].imm, p[ h ].getPos() );
             p[ h ].promosso = true;
@@ -160,7 +155,7 @@ public class Promozione  implements ActionListener{
         m.avanti( p[ h ], p[ h ].getPos(), p[ h ].getPos(), t, true );
         s.repaint();
         
-        CloseFrame cl = new CloseFrame( f, s );
+        CloseFrame cl = new CloseFrame( f );
         cl.windowClosing( new WindowEvent( f, 0 ) );
     
     } // Fine promote

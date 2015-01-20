@@ -8,7 +8,7 @@ public class Regina extends Pezzo{
     
     public Regina( int cp, Image imm, Posizione p ){
         
-        super( "regina", cp, 10, imm, p );
+        super( "Regina", cp, 10, imm, p );
     
     } // Fine Costruttore Regina
     
@@ -24,14 +24,14 @@ public class Regina extends Pezzo{
             
             j++;
             
-            if( isPermit( p.cx + j, p.cy, pos ) ){
+            if( mossaPermessa(p.coordX + j, p.coordY, pos ) ){
                 
-                permpos[ i ] = pos[ p.cx + j ][ p.cy ];
+                impostaMossa[ i ] = pos[ p.coordX + j ][ p.coordY ];
                 i++;
             
             } // Fine If
         
-        } while( isPermit( p.cx + j, p.cy, pos ) && pos[ p.cx + j ][ p.cy ].occupata == -1 );
+        } while( mossaPermessa(p.coordX + j, p.coordY, pos ) && pos[ p.coordX + j ][ p.coordY ].casellaOccupata == -1 );
 
         // 2a direzione
         j = 0;
@@ -40,14 +40,14 @@ public class Regina extends Pezzo{
             
             j++;
             
-            if( isPermit( p.cx - j, p.cy, pos ) ){
+            if( mossaPermessa(p.coordX - j, p.coordY, pos ) ){
                 
-                permpos[ i ] = pos[ p.cx - j ][ p.cy ];
+                impostaMossa[ i ] = pos[ p.coordX - j ][ p.coordY ];
                 i++;
             
             } // Fine If
         
-        } while( isPermit( p.cx - j, p.cy, pos ) && pos[ p.cx - j ][ p.cy ].occupata == -1 );
+        } while( mossaPermessa(p.coordX - j, p.coordY, pos ) && pos[ p.coordX - j ][ p.coordY ].casellaOccupata == -1 );
 
         // 3a direzione
         j = 0;
@@ -56,14 +56,14 @@ public class Regina extends Pezzo{
             
             j++;
             
-            if( isPermit( p.cx, p.cy + j, pos ) ){
+            if( mossaPermessa(p.coordX, p.coordY + j, pos ) ){
                 
-                permpos[ i ] = pos[ p.cx ][ p.cy + j ];
+                impostaMossa[ i ] = pos[ p.coordX ][ p.coordY + j ];
                 i++;
             
             } // Fine If
         
-        } while( isPermit( p.cx, p.cy + j, pos ) && pos[ p.cx ][ p.cy + j ].occupata == -1 );
+        } while( mossaPermessa(p.coordX, p.coordY + j, pos ) && pos[ p.coordX ][ p.coordY + j ].casellaOccupata == -1 );
 
         // 4a direzione
         j = 0;
@@ -72,14 +72,14 @@ public class Regina extends Pezzo{
             
             j++;
             
-            if( isPermit( p.cx, p.cy - j, pos ) ){
+            if( mossaPermessa(p.coordX, p.coordY - j, pos ) ){
                 
-                permpos[ i ] = pos[ p.cx ][ p.cy - j ];
+                impostaMossa[ i ] = pos[ p.coordX ][ p.coordY - j ];
                 i++;
             
             } // Fine If
         
-        } while( isPermit( p.cx, p.cy - j, pos ) && pos[ p.cx ][ p.cy - j ].occupata == -1 );
+        } while( mossaPermessa(p.coordX, p.coordY - j, pos ) && pos[ p.coordX ][ p.coordY - j ].casellaOccupata == -1 );
 
         // 5a direzione
         j = 0;
@@ -88,14 +88,14 @@ public class Regina extends Pezzo{
             
             j++;
             
-            if( isPermit( p.cx + j, p.cy + j, pos ) ){
+            if( mossaPermessa( p.coordX + j, p.coordY + j, pos ) ){
                 
-                permpos[ i ] = pos[ p.cx + j ][ p.cy + j ];
+                impostaMossa[ i ] = pos[ p.coordX + j ][ p.coordY + j ];
                 i++;
             
             } // Fine If
         
-        } while( isPermit( p.cx + j, p.cy + j, pos ) && pos[ p.cx + j ][ p.cy + j ].occupata == -1 );
+        } while( mossaPermessa( p.coordX + j, p.coordY + j, pos ) && pos[ p.coordX + j ][ p.coordY + j ].casellaOccupata == -1 );
 
         //6a direzione
         j = 0;
@@ -104,14 +104,14 @@ public class Regina extends Pezzo{
             
             j++;
             
-            if( isPermit( p.cx - j, p.cy - j, pos ) ){
+            if( mossaPermessa( p.coordX - j, p.coordY - j, pos ) ){
                 
-                permpos[ i ] = pos[ p.cx - j ][ p.cy - j ];
+                impostaMossa[ i ] = pos[ p.coordX - j ][ p.coordY - j ];
                 i++;
             
             } // Fine If
         
-        } while( isPermit( p.cx - j, p.cy - j, pos ) && pos[ p.cx - j ][ p.cy - j ].occupata == -1 );
+        } while( mossaPermessa( p.coordX - j, p.coordY - j, pos ) && pos[ p.coordX - j ][ p.coordY - j ].casellaOccupata == -1 );
 
         // 7a direzione
         j = 0;
@@ -120,14 +120,14 @@ public class Regina extends Pezzo{
             
             j++;
             
-            if( isPermit( p.cx + j, p.cy - j, pos ) ){
+            if( mossaPermessa( p.coordX + j, p.coordY - j, pos ) ){
                 
-                permpos[ i ] = pos[ p.cx + j ][ p.cy - j ];
+                impostaMossa[ i ] = pos[ p.coordX + j ][ p.coordY - j ];
                 i++;
             
             } // Fine If
         
-        } while( isPermit( p.cx + j, p.cy - j, pos ) && pos[ p.cx + j ][ p.cy - j ].occupata == -1 );
+        } while( mossaPermessa( p.coordX + j, p.coordY - j, pos ) && pos[ p.coordX + j ][ p.coordY - j ].casellaOccupata == -1 );
 
         // 8a direzione
         j = 0;
@@ -136,17 +136,17 @@ public class Regina extends Pezzo{
             
             j++;
             
-            if( isPermit( p.cx - j, p.cy + j, pos ) ){
+            if( mossaPermessa( p.coordX - j, p.coordY + j, pos ) ){
                 
-                permpos[ i ] = pos[ p.cx - j ][ p.cy + j ];
+                impostaMossa[ i ] = pos[ p.coordX - j ][ p.coordY + j ];
                 i++;
             
             } // Fine If
         
-        } while( isPermit( p.cx - j, p.cy + j, pos ) && pos[ p.cx - j ][ p.cy + j ].occupata == -1 );
+        } while( mossaPermessa( p.coordX - j, p.coordY + j, pos ) && pos[ p.coordX - j ][ p.coordY + j ].casellaOccupata == -1 );
         
-        permpos[ i ] = null;
-        return permpos;
+        impostaMossa[ i ] = null;
+        return impostaMossa;
     
     } // Fine mossePermesse
     

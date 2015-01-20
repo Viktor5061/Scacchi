@@ -6,13 +6,12 @@ import javax.swing.*;
 // Permette di chiudere un frame ripassando il focus al frame della scacchiera
 public class CloseFrame implements WindowListener {
     
-    private JFrame f, fr;
+    private JFrame f;
     
     // Al costruttore vengono passati i riferimenti della finestra da chiudere e della scacchiera
-    public CloseFrame( JFrame f, JFrame fr ){
+    public CloseFrame( JFrame f ){
         
         this.f = f;
-        this.fr = fr;
     
     } // Fine Costruttore CloseFrame
 
@@ -21,7 +20,7 @@ public class CloseFrame implements WindowListener {
     public void windowClosing( WindowEvent e ){
         
         f.dispose();
-        fr.toFront();
+       // fr.toFront();
     
     } // Fine windowClosing
     

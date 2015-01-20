@@ -6,9 +6,9 @@ import java.awt.*;
 // Descrive gli attribuiti e i metodi di un cavallo sulla scacchiera
 public class Cavallo extends Pezzo{
     
-    public Cavallo( int cp, Image imm, Posizione p ){
+    public Cavallo( int casellaOccupata, Image imm, Posizione pos ){
         
-        super( "cavallo", cp, 3, imm, p );
+        super( "Cavallo", casellaOccupata, 3, imm, pos );
     
     } // Fine Costruttore Cavallo
     
@@ -17,64 +17,72 @@ public class Cavallo extends Pezzo{
         
         int i = 0;
         
-        if( isPermit( p.cx + 2, p.cy + 1, pos ) ){
+        // Due In Alto E Una A Destra
+        if( mossaPermessa( p.coordX + 2, p.coordY + 1, pos ) ){
             
-            permpos[ i ] = pos[ p.cx + 2][ p.cy + 1 ];
+            impostaMossa[ i ] = pos[ p.coordX + 2][ p.coordY + 1 ];
             i++;
         
         } // Fine If
 	
-        if( isPermit( p.cx + 1, p.cy + 2, pos ) ){
+        // Due In Alto E Una A Sinistra
+        if( mossaPermessa( p.coordX + 1, p.coordY + 2, pos ) ){
             
-            permpos[ i ] = pos[ p.cx + 1 ][ p.cy + 2 ];
+            impostaMossa[ i ] = pos[ p.coordX + 1 ][ p.coordY + 2 ];
             i++;
         
         } // Fine If
         
-        if( isPermit( p.cx - 1, p.cy + 2, pos ) ){
+        // Una In Alto E Due A Destra
+        if( mossaPermessa( p.coordX - 1, p.coordY + 2, pos ) ){
             
-            permpos[ i ] = pos[ p.cx - 1 ][ p.cy + 2 ];
+            impostaMossa[ i ] = pos[ p.coordX - 1 ][ p.coordY + 2 ];
             i++;
         
         } // Fine If
         
-        if( isPermit( p.cx - 2, p.cy + 1, pos ) ){
+        // Una In Alto E Due A Sinistra
+        if( mossaPermessa( p.coordX - 2, p.coordY + 1, pos ) ){
             
-            permpos[ i ] = pos[ p.cx - 2][ p.cy + 1 ]; 
+            impostaMossa[ i ] = pos[ p.coordX - 2][ p.coordY + 1 ]; 
             i++;
         
         } // Fine If
         
-        if( isPermit( p.cx - 2, p.cy - 1, pos ) ){
+        // Due In Basso E Una A Destra
+        if( mossaPermessa( p.coordX - 2, p.coordY - 1, pos ) ){
             
-            permpos[ i ] = pos[ p.cx - 2][ p.cy - 1 ]; 
+            impostaMossa[ i ] = pos[ p.coordX - 2][ p.coordY - 1 ]; 
             i++;
         
         } // Fine If
         
-        if( isPermit( p.cx - 1, p.cy - 2, pos ) ){
+        // Due In Basso E Una A Sinistra
+        if( mossaPermessa( p.coordX - 1, p.coordY - 2, pos ) ){
             
-            permpos[ i ] = pos[ p.cx - 1 ][ p.cy - 2 ];
+            impostaMossa[ i ] = pos[ p.coordX - 1 ][ p.coordY - 2 ];
             i++;
         
         } // Fine If
         
-        if( isPermit( p.cx + 1, p.cy - 2, pos ) ){
+        // Una In Basso E Due A Destra
+        if( mossaPermessa( p.coordX + 1, p.coordY - 2, pos ) ){
             
-            permpos[ i ] = pos[ p.cx + 1 ][ p.cy - 2 ]; 
+            impostaMossa[ i ] = pos[ p.coordX + 1 ][ p.coordY - 2 ]; 
             i++;
         
         } // Fine If
         
-        if( isPermit( p.cx + 2, p.cy - 1, pos ) ){
+        // Una In Basso E Due A Sinistra
+        if( mossaPermessa( p.coordX + 2, p.coordY - 1, pos ) ){
             
-            permpos[ i ] = pos[ p.cx + 2 ][ p.cy - 1 ]; 
+            impostaMossa[ i ] = pos[ p.coordX + 2 ][ p.coordY - 1 ]; 
             i++;
         
         } // Fine If
         
-        permpos[ i ] = null;
-        return permpos;
+        impostaMossa[ i ] = null;
+        return impostaMossa;
     
     } // Fine mossePermesse
     

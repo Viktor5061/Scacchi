@@ -10,7 +10,7 @@ public class Re extends Pezzo{
     
     public Re( int cp, Image imm, Posizione p, Pezzo pAvv[], Pezzo pProp[] ){
         
-        super( "re", cp, 100, imm, p );
+        super( "Re", cp, 100, imm, p );
         pA = pAvv;
         pP = pProp;
     
@@ -21,58 +21,58 @@ public class Re extends Pezzo{
         
         int i = 0;
         
-        if( isPermit( p.cx + 1, p.cy, pos ) ){
+        if( mossaPermessa(p.coordX + 1, p.coordY, pos ) ){
             
-            permpos[ i ] = pos[ p.cx + 1 ][ p.cy ];
+            impostaMossa[ i ] = pos[ p.coordX + 1 ][ p.coordY ];
             i++;
         
         } // Fine If
         
-        if( isPermit( p.cx + 1, p.cy + 1, pos ) ){
+        if( mossaPermessa( p.coordX + 1, p.coordY + 1, pos ) ){
             
-            permpos[ i ] = pos[ p.cx + 1 ][ p.cy + 1 ];
+            impostaMossa[ i ] = pos[ p.coordX + 1 ][ p.coordY + 1 ];
             i++;
         
         } // Fine If
         
-        if( isPermit( p.cx, p.cy + 1, pos ) ){
+        if( mossaPermessa(p.coordX, p.coordY + 1, pos ) ){
             
-            permpos[ i ] = pos[ p.cx ][ p.cy + 1 ];
+            impostaMossa[ i ] = pos[ p.coordX ][ p.coordY + 1 ];
             i++;
         
         } // Fine If
         
-        if( isPermit( p.cx - 1, p.cy + 1, pos ) ){
+        if( mossaPermessa( p.coordX - 1, p.coordY + 1, pos ) ){
             
-            permpos[ i ] = pos[ p.cx - 1 ][ p.cy + 1 ];
+            impostaMossa[ i ] = pos[ p.coordX - 1 ][ p.coordY + 1 ];
             i++;
         
         } // Fine If
         
-        if( isPermit( p.cx - 1, p.cy, pos ) ){
+        if( mossaPermessa(p.coordX - 1, p.coordY, pos ) ){
             
-            permpos[ i ] = pos[ p.cx - 1 ][ p.cy ];
+            impostaMossa[ i ] = pos[ p.coordX - 1 ][ p.coordY ];
             i++;
         
         } // Fine If
         
-        if( isPermit( p.cx - 1, p.cy - 1, pos ) ){
+        if( mossaPermessa( p.coordX - 1, p.coordY - 1, pos ) ){
             
-            permpos[ i ] = pos[ p.cx - 1 ][ p.cy - 1 ];
+            impostaMossa[ i ] = pos[ p.coordX - 1 ][ p.coordY - 1 ];
             i++;
         
         } // Fine If
         
-        if( isPermit( p.cx, p.cy - 1, pos ) ){
+        if( mossaPermessa(p.coordX, p.coordY - 1, pos ) ){
             
-            permpos[ i ] = pos[ p.cx ][ p.cy - 1 ];
+            impostaMossa[ i ] = pos[ p.coordX ][ p.coordY - 1 ];
             i++;
         
         } // Fine If
         
-        if( isPermit( p.cx + 1, p.cy - 1, pos ) ){
+        if( mossaPermessa( p.coordX + 1, p.coordY - 1, pos ) ){
             
-            permpos[ i ] = pos[ p.cx + 1 ][ p.cy - 1 ];
+            impostaMossa[ i ] = pos[ p.coordX + 1 ][ p.coordY - 1 ];
             i++;
         
         } // Fine If
@@ -91,16 +91,16 @@ public class Re extends Pezzo{
         
         if ( p == pos[ 4 ][ k ] && !spostato ){
             
-            if( !pP[ 9 ].spostato && isPermit( 5, k, pos ) && isPermit( 6, k, pos ) ){
+            if( !pP[ 9 ].spostato && mossaPermessa( 5, k, pos ) && mossaPermessa( 6, k, pos ) ){
                 
-                permpos[ i ] = pos[ 6 ][ k ];
+                impostaMossa[ i ] = pos[ 6 ][ k ];
                 i++;
             
             } // Fine If
             
-            if( !pP[ 8 ].spostato && isPermit( 3, k, pos ) && isPermit( 2, k, pos ) ){
+            if( !pP[ 8 ].spostato && mossaPermessa( 3, k, pos ) && mossaPermessa( 2, k, pos ) ){
                 
-                permpos[ i ] = pos[ 2 ][ k ];
+                impostaMossa[ i ] = pos[ 2 ][ k ];
                 i++;
             
             } // Fine If
@@ -108,8 +108,8 @@ public class Re extends Pezzo{
         } // Fine If
 
         // Per l'arrocco lo spostamento della torre � gestito da Mossa
-        permpos[ i ] = null;
-        return permpos;
+        impostaMossa[ i ] = null;
+        return impostaMossa;
     
     } // Fine mossePermesse
     

@@ -3,30 +3,30 @@ package scacchi;
 import java.io.*;
 
 // Rappresenta le caratteristiche di una situazione della partita
-// Di fatti una situazione � l'insieme dei caratteri di una mossa
+// Di fatti una situazione e l'insieme dei caratteri di una mossa
 public class Situazione implements Serializable{
     
     protected String peNome;
     protected int peColore;
-    protected int turnoIniz, or;
+    protected int turnoIniziale, or;
     protected int posIcx, posIcy;
     protected int posFcx, posFcy;
     protected String lastmove;
     protected String prom;
 
     // Salva negli attributi le caratteristiche della mossa
-    public Situazione( Pezzo pe, int g, Posizione posI, Posizione posF, int turnoIniz, String pr ){
+    public Situazione( Pezzo pezzo, int g, Posizione posizioneIniziale, Posizione posizioneFinale, int turnoIniziale, String pr ){
         
-        this.turnoIniz = turnoIniz;
+        this.turnoIniziale = turnoIniziale;
         prom = pr;
-        peColore = pe.colore;
-        peNome = "" + pe.nome;
-        posIcx = posI.cx;
-        posIcy = posI.cy;
-        posFcx = posF.cx;
-        posFcy = posF.cy;
+        peColore = pezzo.colore;
+        peNome = "" + pezzo.nome;
+        posIcx = posizioneIniziale.coordX;
+        posIcy = posizioneIniziale.coordY;
+        posFcx = posizioneFinale.coordX;
+        posFcy = posizioneFinale.coordY;
         or = g;
-        lastmove = posI.coord() + " -> " + posF.coord();
+        lastmove = posizioneIniziale.coord() + " -> " + posizioneFinale.coord();
     
     } // Fine Costruttore Situazione
 
@@ -34,16 +34,16 @@ public class Situazione implements Serializable{
     @Override
     public String toString(){
         
-        if( turnoIniz == 0 ){
+        if( turnoIniziale == 0 ){
             
-            return "NERO: "+lastmove + '\n';
+            return "Nero: " + lastmove + '\n';
         
         } else {
             
-            return "BIANCO: "+lastmove + "\n";
+            return "Bianco: " + lastmove + "\n";
         
-        } 
+        } // Fine If Else
     
-    } 
+    } // Fine toString
 
-} 
+} // Fine Classe Situazione

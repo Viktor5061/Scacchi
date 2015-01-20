@@ -161,7 +161,11 @@ public class ListaNodi implements Lista, Serializable, Cloneable{
         
         } // Fine While
         
+<<<<<<< HEAD
+        tmp += "\n\n\t\t\t" + "Numero di mosse: " + ( getTnumb() - 1 );
+=======
         tmp += "\n\n" + "\t\t\t" + "Numero di mosse: " + ( getTnumb() - 1 );
+>>>>>>> origin/master
         
         return tmp;
     

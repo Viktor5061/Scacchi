@@ -2,8 +2,6 @@ package scacchi;
 
 import java.awt.*;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -15,16 +13,12 @@ public class InterfacciaGrafica {
     private Posizione[][] p = new Posizione[8][8];
     private TerminaProgramma ter;
     private JFrame f;
-    protected float dimensioneSchermo;
+    protected float dimensioneSchermo = (float) 1.8;
 
     // Il costruttore genera i pannelli della scacchiera
-    // (board,mosse,pezzi mangiati), i pezzi e le posizioni
+    // board,mosse,pezzi mangiati, i pezzi e le posizioni
     public InterfacciaGrafica( Lista rst ){
         
-        
-        Toolkit tk = Toolkit.getDefaultToolkit();
-        dimensioneSchermo = (float)tk.getScreenSize().getWidth() / 1024;
-            
         f = new JFrame( "Progetto Scacchi" );
         Container c = f.getContentPane();
         f.setDefaultCloseOperation( f.DO_NOTHING_ON_CLOSE );
@@ -39,39 +33,38 @@ public class InterfacciaGrafica {
                     
             }
                 
-        }
+        } // Fine For
             
         // Recupero le immagini dei pezzi bianchi
         Image imm[] = new Image[ 12 ];
+        
         try {
             
-            imm[ 0 ] = ImageIO.read(getClass().getResource("img/BPedone.gif"));
-            imm[ 1 ] = ImageIO.read(getClass().getResource("img/BTorre.gif"));
-            imm[ 2 ] = ImageIO.read(getClass().getResource("img/BCavallo.gif"));
-            imm[ 3 ] = ImageIO.read(getClass().getResource("img/BAlfiere.gif"));
-            imm[ 4 ] = ImageIO.read(getClass().getResource("img/BRegina.gif"));
-            imm[ 5 ] = ImageIO.read(getClass().getResource("img/BRe.gif"));
+            imm[ 0 ] = ImageIO.read( getClass().getResource( "img/BPedone.gif" ) );
+            imm[ 1 ] = ImageIO.read( getClass().getResource("img/BTorre.gif") );
+            imm[ 2 ] = ImageIO.read( getClass().getResource( "img/BCavallo.gif") );
+            imm[ 3 ] = ImageIO.read( getClass().getResource("img/BAlfiere.gif") );
+            imm[ 4 ] = ImageIO.read( getClass().getResource("img/BRegina.gif") );
+            imm[ 5 ] = ImageIO.read( getClass().getResource("img/BRe.gif") );
             
             // Recupero le immagini pezzi neri
-            imm[ 6 ] = ImageIO.read(getClass().getResource("img/NPedone.gif"));
-            imm[ 7 ] = ImageIO.read(getClass().getResource("img/NTorre.gif"));
-            imm[ 8 ] = ImageIO.read(getClass().getResource("img/NCavallo.gif"));
-            imm[ 9 ] = ImageIO.read(getClass().getResource("img/NAlfiere.gif"));
-            imm[ 10 ] = ImageIO.read(getClass().getResource("img/NRegina.gif"));
-            imm[ 11 ] = ImageIO.read(getClass().getResource("img/NRe.gif"));
+            imm[ 6 ] = ImageIO.read( getClass().getResource( "img/NPedone.gif") );
+            imm[ 7 ] = ImageIO.read( getClass().getResource( "img/NTorre.gif") );
+            imm[ 8 ] = ImageIO.read( getClass().getResource( "img/NCavallo.gif") );
+            imm[ 9 ] = ImageIO.read( getClass().getResource( "img/NAlfiere.gif") );
+            imm[ 10 ] = ImageIO.read( getClass().getResource( "img/NRegina.gif") );
+            imm[ 11 ] = ImageIO.read( getClass().getResource( "img/NRe.gif") );
         
-        } catch (IOException ex) {
-            Logger.getLogger(InterfacciaGrafica.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch ( IOException ex ){}
             
         // Creazione dei pedoni bianchi
         for( int i = 0; i < 8; i++ ){
                 
-            pB[ i ] = new Pedone( 1, imm[0], p[i][1], pN );
+            pB[ i ] = new Pedone( 1, imm[0], p[ i ][ 1 ], pN );
                 
         }
             
-        // Creazione dei pezzi bianchi, prima fila
+        // Creazione dei pezzi bianchi
         pB[ 8 ] = new Torre ( 1, imm[ 1 ], p[ 0 ][ 0 ] );
         pB[ 9 ] = new Torre ( 1, imm[ 1 ], p[ 7 ][ 0 ] );
         pB[ 10 ] = new Cavallo ( 1, imm[ 2 ], p[ 1 ][ 0 ] );
@@ -89,7 +82,7 @@ public class InterfacciaGrafica {
                 
         }
             
-        // Creazione dei pezzi neri prima fila
+        // Creazione dei pezzi neri
         pN[ 8 ] = new Torre ( 0, imm[ 7 ], p[ 0 ][ 7 ] );
         pN[ 9 ] = new Torre ( 0, imm[ 7 ], p[ 7 ][ 7 ] );
         pN[ 10 ] = new Cavallo ( 0, imm[ 8 ], p[ 1 ][ 7 ] );
@@ -101,18 +94,20 @@ public class InterfacciaGrafica {
             
         // Creo il pannello dei pezzi mangiati
         Mangiati mang = new Mangiati( pB, pN, dimensioneSchermo );
-        mang.setBounds( ( int )( 495 * dimensioneSchermo ) + 8, 8, ( int )( 250 * dimensioneSchermo ), ( int )( 352 * dimensioneSchermo ) );
+        mang.setBounds( ( int )( 495 * dimensioneSchermo ) + 8, 8, ( int )( 250 * dimensioneSchermo ), ( int )( 350 * dimensioneSchermo ) );
+        mang.setBackground( Color.BLACK );
         c.add( mang );
             
         // Pannello con le mosse effettuate dall'utente
         Mossa mos = new Mossa( dimensioneSchermo, p, pB, pN, mang, f, rst );
         mos.setPointer( mos );
         mos.setBounds( ( int )( 495 * dimensioneSchermo ) + 8, 8 + ( int )( 360 * dimensioneSchermo ), ( int )( 250 * dimensioneSchermo ), ( int )( 120 * dimensioneSchermo ) );
+        mos.setBackground( Color.red );
         c.add( mos );
             
         // Creazione della scacchiera
         Scacchiera b = new Scacchiera( p, dimensioneSchermo, pB, pN, mos, turno );
-        b.setBounds( 8, 8, ( int )( 486 * dimensioneSchermo ), ( int )( 484 * dimensioneSchermo ) );
+        b.setBounds( 8, 8, ( int )( 485 * dimensioneSchermo ), ( int )( 485 * dimensioneSchermo ) );
         c.add( b );
         mos.b = b;
             

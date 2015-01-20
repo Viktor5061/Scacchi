@@ -8,18 +8,18 @@ import java.awt.event.*;
 public class NuovaPartita extends JFrame implements ActionListener{
     
     private float k;
-    private JFrame f;
+    private JFrame mainFrame;
     private Lista rst;
-    private Scacchiera brd;
+    private Scacchiera scacchiera;
     
     // Apre un frame in cui si chiede se si vuole realmente iniziare una partita nuova
-    public NuovaPartita( JFrame f, float k, Lista rst, Scacchiera brd ){
+    public NuovaPartita( JFrame frame, float k, Lista rst, Scacchiera scacchiera ){
         
         super( "Inizia Una Nuova Partita" );
-        this.f = f;
+        mainFrame = frame;
         this.k = k;
         this.rst = rst;
-        this.brd = brd;
+        this.scacchiera = scacchiera;
         
         Container c = getContentPane();
         
@@ -41,6 +41,7 @@ public class NuovaPartita extends JFrame implements ActionListener{
     } // Fine Costruttore NuovaPartita
 
     // Riaggiorna la scacchiera a mosse zero, oppure esce senza far nulla
+    @Override
     public void actionPerformed(ActionEvent e){
         
         String scelta = e.getActionCommand();
@@ -48,7 +49,7 @@ public class NuovaPartita extends JFrame implements ActionListener{
         if( scelta.equals( "Si" ) ){
             
             dispose();
-            f.dispose();
+            mainFrame.dispose();
             rst.removeAll();
             new InterfacciaGrafica( rst );
         

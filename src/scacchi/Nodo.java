@@ -20,6 +20,7 @@ public class Nodo implements Serializable{
         
         info = o;
         next = n;
+        System.out.println(""+o+":"+n);
     
     } // Fine costruttore Nodo con parametri
 

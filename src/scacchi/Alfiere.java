@@ -6,9 +6,9 @@ import java.awt.*;
 // Descrive gli attribuiti e i metodi di un alfiere sulla scacchiera
 public class Alfiere extends Pezzo{
     
-    public Alfiere( int cp, Image imm, Posizione p ){
+    public Alfiere( int casellaOccupata, Image imm, Posizione pos ){
         
-        super( "alfiere", cp, 3, imm, p );
+        super( "Alfiere", casellaOccupata, 3, imm, pos );
     
     } // Fine Costruttore Alfiere
     
@@ -18,70 +18,78 @@ public class Alfiere extends Pezzo{
         int i = 0;
         int j = 0;
         
+        // Prima Diagonale
         do{
             
             j++;
             
-            if( isPermit( p.cx + j, p.cy + j, pos ) ){
+            if( mossaPermessa( p.coordX + j, p.coordY + j, pos ) ){
                 
-                permpos[ i ] = pos[ p.cx + j ][ p.cy + j ];
+                impostaMossa[ i ] = pos[ p.coordX + j ][ p.coordY + j ];
                 i++;
                 
             } // Fine If
         
-        } while( isPermit( p.cx + j, p.cy + j, pos ) && pos[ p.cx + j ][ p.cy + j ].occupata == -1 ); // Fine Do While
+        } while( mossaPermessa( p.coordX + j, p.coordY + j, pos ) && pos[ p.coordX + j ][ p.coordY + j ].casellaOccupata == -1 ); // Fine Do While
         
         j = 0;
 	
+        // Seconda Diagonale
         do{
             
             j++;
             
-            if( isPermit( p.cx - j, p.cy - j, pos ) ){
+            if( mossaPermessa( p.coordX - j, p.coordY - j, pos ) ){
                 
-                permpos[ i ] = pos[ p.cx - j ][ p.cy - j ];
+                impostaMossa[ i ] = pos[ p.coordX - j ][ p.coordY - j ];
                 i++;
             
             } // Fine If
         
-        } while( isPermit( p.cx - j, p.cy - j, pos ) && pos[ p.cx - j ][ p.cy - j ].occupata == -1 ); // Fine Do While
+        } while( mossaPermessa( p.coordX - j, p.coordY - j, pos ) && pos[ p.coordX - j ][ p.coordY - j ].casellaOccupata == -1 ); // Fine Do While
         
         j = 0;
         
+        // Terza Diagonale
         do{
             
             j++;
             
-            if( isPermit( p.cx + j, p.cy - j, pos ) ){
+            if( mossaPermessa( p.coordX + j, p.coordY - j, pos ) ){
                 
-                permpos[ i ] = pos[ p.cx + j ][ p.cy - j ];
+                impostaMossa[ i ] = pos[ p.coordX + j ][ p.coordY - j ];
                 i++;
             
             } // Fine If
         
-        } while( isPermit( p.cx + j, p.cy - j, pos ) && pos[ p.cx + j ][ p.cy - j ].occupata == -1 ); // Fine Do While
+        } while( mossaPermessa( p.coordX + j, p.coordY - j, pos ) && pos[ p.coordX + j ][ p.coordY - j ].casellaOccupata == -1 ); // Fine Do While
         
         j = 0;
         
+        // Quarta Diagonale
         do{
             
             j++;
             
-            if( isPermit( p.cx - j, p.cy + j, pos ) ){
+            if( mossaPermessa( p.coordX - j, p.coordY + j, pos ) ){
                 
-                permpos[ i ] = pos[ p.cx - j ][ p.cy + j ];
+                impostaMossa[ i ] = pos[ p.coordX - j ][ p.coordY + j ];
                 i++;
             
             } // Fine If
         
-        } while( isPermit( p.cx - j, p.cy + j, pos ) && pos[ p.cx - j ][ p.cy + j ].occupata == -1 ); // Fine Do While
+        } while( mossaPermessa( p.coordX - j, p.coordY + j, pos ) && pos[ p.coordX - j ][ p.coordY + j ].casellaOccupata == -1 );
         
-        permpos[ i ] = null;
-        return permpos;
+        impostaMossa[ i ] = null;
+        return impostaMossa;
     
     } // Fine mossePermesse
     
     @Override
-    public Posizione[] mossePermesseRe( Posizione pos[][] ){ return null; }
+    public Posizione[] mossePermesseRe( Posizione pos[][] ){
+        
+        return null;
+    
+    } // Fine mossePermesseRe
 
 } // Fine Classe Alfiere

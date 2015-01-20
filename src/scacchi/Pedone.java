@@ -10,7 +10,7 @@ public class Pedone extends Pezzo{
     
     public Pedone( int cp, Image imm, Posizione p, Pezzo[] pAvv ){
         
-        super( "pedone", cp, 1, imm, p );
+        super( "Pedone", cp, 1, imm, p );
         pA = pAvv;
     
     } // Fine Costruttore Pedone
@@ -36,32 +36,32 @@ public class Pedone extends Pezzo{
         
         } // Fine If Else
         
-        if( isPermit( p.cx, p.cy + s, pos ) && pos[ p.cx ][ p.cy + s ].occupata == -1 ){
+        if( mossaPermessa(p.coordX, p.coordY + s, pos ) && pos[ p.coordX ][ p.coordY + s ].casellaOccupata == -1 ){
             
-            permpos[ i ] = pos[ p.cx ][ p.cy + s ];
+            impostaMossa[ i ] = pos[ p.coordX ][ p.coordY + s ];
             i++;
         
         } // Fine If
         
-        if( isPermit( p.cx + s, p.cy + s, pos ) && pos[ p.cx + s ][ p.cy + s ].occupata != -1 ){
+        if( mossaPermessa( p.coordX + s, p.coordY + s, pos ) && pos[ p.coordX + s ][ p.coordY + s ].casellaOccupata != -1 ){
             
-            permpos[ i ] = pos[ p.cx + s ][ p.cy + s ];
+            impostaMossa[ i ] = pos[ p.coordX + s ][ p.coordY + s ];
             i++;
         
         } // Fine If
         
-        if( isPermit( p.cx - s, p.cy + s, pos ) && pos[ p.cx - s ][ p.cy + s ].occupata != -1 ){
+        if( mossaPermessa( p.coordX - s, p.coordY + s, pos ) && pos[ p.coordX - s ][ p.coordY + s ].casellaOccupata != -1 ){
             
-            permpos[ i ] = pos[ p.cx - s ][ p.cy + s ];
+            impostaMossa[ i ] = pos[ p.coordX - s ][ p.coordY + s ];
             i++;
         
         } // Fine If
         
-        if( p.cy == t && isPermit( p.cx, p.cy + s, pos ) && pos[ p.cx ][ p.cy + s ].occupata == -1){
+        if( p.coordY == t && mossaPermessa(p.coordX, p.coordY + s, pos ) && pos[ p.coordX ][ p.coordY + s ].casellaOccupata == -1){
             
-            if( isPermit( p.cx, p.cy + 2 * s, pos ) && pos[ p.cx ][ p.cy + 2 * s ].occupata == -1 ){
+            if( mossaPermessa(p.coordX, p.coordY + 2 * s, pos ) && pos[ p.coordX ][ p.coordY + 2 * s ].casellaOccupata == -1 ){
                 
-                permpos[ i ] = pos[ p.cx ][ p.cy + 2 * s ];
+                impostaMossa[ i ] = pos[ p.coordX ][ p.coordY + 2 * s ];
                 i++;
             
             } // Fine If
@@ -69,7 +69,7 @@ public class Pedone extends Pezzo{
         } // Fine If
         
         // Controllo per l'en passant
-        if( p.cy == u ){
+        if( p.coordY == u ){
 
             // En passant destro
             isEnPassant( s, pos );
@@ -79,20 +79,20 @@ public class Pedone extends Pezzo{
         }
 
         // L'en passant(controllo mossa precedente del pedone avversario) e l'arrivo in fondo sono gestiti da Mossa
-        permpos[ i ] = null;
-        return permpos;
+        impostaMossa[ i ] = null;
+        return impostaMossa;
     
     } // Fine MossePermese
     
     private void isEnPassant( int z, Posizione pos[][] ){
         
-        if( isPermit( p.cx + z, p.cy + s, pos ) ){
+        if( mossaPermessa( p.coordX + z, p.coordY + s, pos ) ){
             
             for( int k = 0; k < 8; k++ ){
                 
-                if( !pA[ k ].mangiato && !pA[ k ].promosso && pA[ k ].p == pos[ p.cx + z ][ p.cy ] ){
+                if( !pA[ k ].mangiato && !pA[ k ].promosso && pA[ k ].p == pos[ p.coordX + z ][ p.coordY ] ){
                     
-                    permpos[ i ] = pos[ p.cx + z ][ p.cy + s ];
+                    impostaMossa[ i ] = pos[ p.coordX + z ][ p.coordY + s ];
                     i++;
                     break;
                 
@@ -116,22 +116,22 @@ public class Pedone extends Pezzo{
         if( colore == 1 ) s=1;
         else s = -1;
         
-        if( isPermit( p.cx + s, p.cy + s, pos ) ){
+        if( mossaPermessa( p.coordX + s, p.coordY + s, pos ) ){
             
-            permpos[ i ] = pos[ p.cx + s ][ p.cy + s ];
+            impostaMossa[ i ] = pos[ p.coordX + s ][ p.coordY + s ];
             i++;
         
         } // Fine If
         
-        if( isPermit( p.cx - s, p.cy + s, pos ) ){
+        if( mossaPermessa( p.coordX - s, p.coordY + s, pos ) ){
             
-            permpos[ i ] = pos[ p.cx - s ][ p.cy + s ];
+            impostaMossa[ i ] = pos[ p.coordX - s ][ p.coordY + s ];
             i++;
         
         } // Fine If
         
-        permpos[ i ] = null;
-        return permpos;
+        impostaMossa[ i ] = null;
+        return impostaMossa;
     
     } // Fine mossePermesseRe
 
